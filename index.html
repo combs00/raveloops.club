@@ -608,7 +608,7 @@
             </svg>
           </h1>
           <p class="site-tagline">
-            Lots of VJ loops for all your rave, party, concert, gig or event needs.
+            Lots of VJ loops for all your rave/party/concert/gig/event needs.
           </p>
           <p class="site-tagline">
             Few free VJ loops, few paid :)
@@ -687,11 +687,27 @@
         }
 
         const mouse = { x: canvas.width * 0.5, y: canvas.height * 0.4 };
-        window.addEventListener("pointermove", (e) => {
+
+        const updateMouseFromClient = (clientX, clientY) => {
           const dpr = window.devicePixelRatio || 1;
-          mouse.x = e.clientX * dpr;
-          mouse.y = (window.innerHeight - e.clientY) * dpr;
+          mouse.x = clientX * dpr;
+          mouse.y = (window.innerHeight - clientY) * dpr;
+        };
+
+        window.addEventListener("pointermove", (e) => {
+          updateMouseFromClient(e.clientX, e.clientY);
         });
+
+        window.addEventListener(
+          "touchmove",
+          (e) => {
+            if (e.touches && e.touches.length > 0) {
+              const t = e.touches[0];
+              updateMouseFromClient(t.clientX, t.clientY);
+            }
+          },
+          { passive: true }
+        );
 
         const loop = () => {
           const dpr = window.devicePixelRatio || 1;
