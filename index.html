@@ -522,6 +522,15 @@
         margin: 0;
       }
 
+      .brand-image {
+        width: 100%;
+        max-width: 30rem;
+        height: auto;
+        display: block;
+        margin: 0;
+        object-fit: contain;
+      }
+
       .site-tagline {
         margin: 0;
         font-size: 13px;
@@ -579,34 +588,11 @@
     <main class="shell">
       <section class="card page" aria-label="RaveLoops landing">
         <header class="hero">
-          <h1 class="site-title" aria-label="RaveLoops.Club">
-            <svg
-              viewBox="0 0 560 110"
-              role="presentation"
-              aria-hidden="true"
-              style="width: 100%; height: auto; display: block"
-            >
-              <defs>
-                <linearGradient id="titleStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7" />
-                  <stop offset="50%" stop-color="#c7b7ff" stop-opacity="0.9" />
-                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.7" />
-                </linearGradient>
-              </defs>
-              <text
-                x="0"
-                y="72"
-                font-family="'Space Grotesk', system-ui, -apple-system, sans-serif"
-                font-size="62"
-                letter-spacing="5"
-                fill="none"
-                stroke="url(#titleStroke)"
-                stroke-width="1.4"
-              >
-                RaveLoops.Club
-              </text>
-            </svg>
-          </h1>
+          <img
+            class="brand-image"
+            src="./assets/raveloops-club.png"
+            alt="Rave Loops Club logo"
+          />
           <p class="site-tagline">
             Lots of VJ loops for all your rave/party/concert/gig/event needs.
           </p>
