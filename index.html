@@ -529,15 +529,42 @@
         margin: 0;
       }
 
-      .brand-image {
+      .brand-wrap {
+        display: block;
         width: 100%;
         max-width: 30rem;
+        margin: 0 auto;
+        animation: brand-drift 7s ease-in-out infinite;
+      }
+
+      @keyframes brand-drift {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(0.5px, -1px) rotate(-0.12deg);
+        }
+        66% {
+          transform: translate(-0.5px, 0.5px) rotate(0.1deg);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .brand-wrap {
+          animation: none;
+        }
+      }
+
+      .brand-image {
+        width: 100%;
         height: auto;
         display: block;
         margin: 0;
         object-fit: contain;
         /* White in the PNG × backdrop → shows particles; screen is for black bg art only. */
         mix-blend-mode: multiply;
+        filter: url(#raveloops-vhs-filter);
       }
 
       .site-tagline {
@@ -598,15 +625,58 @@
     -->
   </head>
   <body>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="0"
+      height="0"
+      aria-hidden="true"
+      focusable="false"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+    >
+      <defs>
+        <filter
+          id="raveloops-vhs-filter"
+          x="-10%"
+          y="-10%"
+          width="120%"
+          height="120%"
+          color-interpolation-filters="sRGB"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.022 0.065"
+            numOctaves="2"
+            seed="4"
+            result="noise"
+          >
+            <animate
+              attributeName="baseFrequency"
+              dur="14s"
+              values="0.022 0.065;0.03 0.072;0.022 0.065"
+              repeatCount="indefinite"
+            />
+          </feTurbulence>
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="2.8"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </defs>
+    </svg>
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <main class="shell">
       <section class="card page" aria-label="RaveLoops landing">
         <header class="hero">
-          <img
-            class="brand-image"
-            src="./assets/raveloops-club.png"
-            alt="Rave Loops Club logo"
-          />
+          <div class="brand-wrap">
+            <img
+              class="brand-image"
+              src="./assets/raveloops-club.png"
+              alt="Rave Loops Club logo"
+            />
+          </div>
           <p class="site-tagline">
             Lots of VJ loops for all your rave/party/concert/gig/event needs.
           </p>
