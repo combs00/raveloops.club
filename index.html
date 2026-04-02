@@ -89,6 +89,7 @@
         position: relative;
         width: 100%;
         max-width: 720px;
+        margin: 0 auto;
         z-index: 1;
       }
 
@@ -503,16 +504,22 @@
         color: var(--text-muted);
       }
 
+      .card.page {
+        align-items: center;
+      }
+
       .page {
-        text-align: left;
+        text-align: center;
       }
 
       .hero {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        align-items: flex-start;
+        align-items: center;
         max-width: 30rem;
+        margin: 0 auto;
+        text-align: center;
       }
 
       .site-title {
@@ -529,6 +536,8 @@
         display: block;
         margin: 0;
         object-fit: contain;
+        /* White in the PNG × backdrop → shows particles; screen is for black bg art only. */
+        mix-blend-mode: multiply;
       }
 
       .site-tagline {
@@ -537,6 +546,7 @@
         line-height: 1.7;
         color: rgba(200, 200, 230, 0.86);
         max-width: 30rem;
+        text-align: center;
       }
 
       .site-tagline + .site-tagline {
@@ -549,12 +559,16 @@
         flex-wrap: wrap;
         gap: 10px;
         align-items: center;
+        justify-content: center;
+        width: 100%;
       }
 
       .small-note {
         margin-top: 10px;
         font-size: 11px;
         color: var(--text-muted);
+        text-align: center;
+        width: 100%;
       }
 
       @media (max-width: 719px) {
